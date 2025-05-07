@@ -1,0 +1,37 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+
+data = {
+    'Feature1': np.random.rand(100),
+    'Feature2': np.random.rand(100),
+    'Target': np.random.randint(0, 2, 100)
+}
+
+df = pd.DataFrame(data)
+
+print("First 5 rows of the DataFrame:")
+print(df.head())
+
+print("\nSummary statistics:")
+print(df.describe())
+
+print("\nClass distribution of the target variable:")
+print(df['Target'].value_counts())
+
+
+plt.figure(figsize=(8, 6))
+plt.scatter(df['Feature1'], df['Feature2'], c=df['Target'], cmap='viridis')
+plt.xlabel('Feature1')
+plt.ylabel('Feature2')
+plt.title('Scatter plot of Feature1 vs Feature2')
+plt.colorbar(label='Target')
+plt.show()
+
+
+plt.figure(figsize=(8, 6))
+plt.hist(df['Feature1'], bins=20)
+plt.xlabel('Feature 1')
+plt.ylabel('Frequency')
+plt.title('Distribution of Feature 1')
+plt.show()
